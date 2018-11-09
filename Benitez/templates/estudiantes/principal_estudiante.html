@@ -1,0 +1,131 @@
+{% extends 'master.html' %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link href="{% static 'boostrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<style>
+    #main-header {
+    background: #333;
+    color: white;
+    height: 80px;
+
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+}
+    #main-header a {
+        color: white;
+    }
+
+
+/*
+ * Logo
+ */
+#logo-header {
+    float: left;
+    padding: 15px 0 0 20px;
+    text-decoration: none;
+}
+    #logo-header:hover {
+        color: #0b76a6;
+    }
+
+    #logo-header .site-name {
+        display: block;
+        font-weight: 700;
+        font-size: 1.2em;
+    }
+
+    #logo-header .site-desc {
+        display: block;
+        font-weight: 300;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+
+/*
+ * Navegación
+ */
+nav {
+    float: right;
+}
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        padding-right: 20px;
+    }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+        }
+
+            nav ul li a {
+                display: block;
+                padding: 0 10px;
+                text-decoration: none;
+            }
+
+                nav ul li a:hover {
+                    background: #0b76a6;
+                }
+
+</style>
+<header id="main-header">
+
+    <a id="logo-header" href="#">
+        <span class="site-name">Programacion Avanzada</span>
+        <span class="site-desc">Creando / Jugando / Imaginando con Pato</span>
+    </a> <!-- / #logo-header -->
+
+    <!--<nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav><!-- / nav -->
+
+</header><!-- / #main-header -->
+
+<body>
+    <center><img src="{% static 'img/imagen1.jpg ' %}"></center>
+</body>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">cedula</th>
+            <th scope="col">codigo matricula</th>
+            <th scope="col">apellidos</th>
+            <th scope="col">nombres</th>
+            <th scope="col">carrera</th>
+            <th scope="col">ciclo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in lista %}
+        <tr>
+            <td>{{ c.cedula}}</td>
+            <td>{{ c.codigo_matricula}}</td>
+            <td>{{ c.apellidos}}</td>
+            <td>{{ c.nombres}}</td>
+            <td>{{ c.carrera}}</td>
+            <td>{{ c.ciclo}}</td>
+            <td><a href="modificar?cedula={{ c.cedula }}" class="alert alert-success">Modificar</a></td>
+            <td><a href="eliminar?cedula={{ c.cedula }}" class="alert alert-danger">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+        {% load staticfiles %}
+
+    </tbody>
+</table>
+{% endblock %}

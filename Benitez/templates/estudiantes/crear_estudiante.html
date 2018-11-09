@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% block contenido %}
+
+{{ mensaje }}<br></br>
+<div class="well">
+    <form method="post">
+        {{ f.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Guardar">
+    </form>
+</div>
+{% endblock %}
